@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: soon
-  namespace: chewedfeed
+  namespace: k8sdeploy
   labels:
     name: soon
     app: soon
@@ -36,15 +36,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: corpsite
-  namespace: chewedfeed
+  name: soon
+  namespace: k8sdeploy
   labels:
-    name: corpsite
-    app: corpsite
+    name: soon
+    app: soon
 spec:
   ports:
     - port: 80
       protocol: TCP
       targetPort: 80
   selector:
-    app: corpsite
+    app: soon
