@@ -17,7 +17,7 @@ spec:
         - www.k8sdeploy.dev
       secretName: k8sdeploy-soon
   rules:
-    - host: k8deploy.dev
+    - host: k8sdeploy.dev
       http:
         paths:
           - backend:
