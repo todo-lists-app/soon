@@ -1,0 +1,39 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: k8sdeploy
+  name: soon
+  annotations:
+    cert-manager.io/cluster-issuer: acme-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: soon
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - k8sdeploy.dev
+        - www.k8sdeploy.dev
+      secretName: k8sdeploy-soon
+  rules:
+    - host: k8deploy.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: soon
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+    - host: www.k8sdeploy.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: soon
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
