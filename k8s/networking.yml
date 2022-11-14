@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: k8sdeploy
+  namespace: todo-list
   name: soon
   annotations:
     cert-manager.io/cluster-issuer: acme-prod
@@ -13,11 +13,11 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - k8sdeploy.dev
-        - www.k8sdeploy.dev
-      secretName: k8sdeploy-soon
+        - todo-list.app
+        - www.todo-list.app
+      secretName: todo-list-soon
   rules:
-    - host: k8sdeploy.dev
+    - host: todo-list.app
       http:
         paths:
           - backend:
@@ -27,7 +27,7 @@ spec:
                   number: 80
             path: /
             pathType: Prefix
-    - host: www.k8sdeploy.dev
+    - host: www.todo-list.app
       http:
         paths:
           - backend:
