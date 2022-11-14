@@ -42,7 +42,7 @@
             <script src="./js/jquery.countdown.min.js"></script> <!-- Load jQuery Countdown library -->
             <script>
               $(function() {
-                let launchTime = new Date('January 1, 2023 23:59:00'); // Set launch: [year], [month], [day], [hour]...
+                let launchTime = new Date(2023, 0, 1, 23, 59); // Set launch: [year], [month], [day], [hour]...
                 $("#countdown").countdown({
                   until: launchTime,
                   format: "odHMS"
@@ -50,26 +50,7 @@
               });
             </script>
             <section class="countdown">
-              <div id="countdown" class="hasCountdown">
-                <span class="countdown_row countdown_show4">
-                  <span class="countdown_section">
-                    <span class="countdown_amount">14</span>
-                    <br>days
-                  </span>
-                  <span class="countdown_section">
-                    <span class="countdown_amount">23</span>
-                    <br>hours
-                  </span>
-                  <span class="countdown_section">
-                    <span class="countdown_amount">59</span>
-                    <br>minutes
-                  </span>
-                  <span class="countdown_section">
-                    <span class="countdown_amount">37</span>
-                    <br>seconds
-                  </span>
-                </span>
-              </div>
+              <div id="countdown"></div>
             </section>
             <!-- Countdown end -->
 
