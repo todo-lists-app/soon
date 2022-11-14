@@ -1,4 +1,4 @@
-$(function() {
+function getSoon(site) {
   var launchTime = new Date(2025, 0, 1, 23, 59); // Set launch: [year], [month], [day], [hour]...
   var raw = new XMLHttpRequest()
   raw.open('GET', 'https://chewedfeed.com/soon.json', false)
@@ -9,7 +9,7 @@ $(function() {
         var json = JSON.parse(allText);
         var html = '';
         for (var i = 0; i < json.length; i++) {
-          if (json[i].name === "Todo-List.app") {
+          if (json[i].name === site) {
             var year = json[i].launchDate.year
             var month = json[i].launchDate.month
             var day = json[i].launchDate.day
@@ -25,10 +25,15 @@ $(function() {
             });
             $("#progressbar").animate({width: json[i].progress + "%"}, 2000);
             $("#progressAmount").text(json[i].progress + "%");
+            $("#pageTitle").text(json[i].name + " Coming Soon");
+
+            var a = document.createElement('div');
+            a.innerHTML = json[i].fullDesc;
+            $("#fullDesc").append(a)
           }
         }
       }
     }
   }
   raw.send(null);
-});
+}
