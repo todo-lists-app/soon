@@ -28,6 +28,7 @@ function getSoon(site) {
         if (showdown !== undefined) {
           var s = new showdown.Converter();
           if (s !== undefined) {
+            console.log("preshow", json.description);
             var html = s.makeHtml(json.description);
             var el = document.getElementById("fullDesc");
             el.innerHTML = html;
