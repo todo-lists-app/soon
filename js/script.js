@@ -25,9 +25,12 @@ function getSoon(site) {
         $("#progressAmount").text(json.progress + "%");
         $("#pageTitle").text(json.name + " Coming Soon");
 
-        var a = document.createElement('div');
-        a.innerHTML = json.fullDesc;
-        $("#fullDesc").append(a)
+        var showdown = new showdown.Converter();
+        if (showdown !== undefined) {
+          var html = showdown.makeHtml(json.description);
+          var el = document.getElementById("fullDesc");
+          el.innerHTML = html;
+        }
       }
     }
   }
