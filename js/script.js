@@ -28,7 +28,7 @@ function getSoon(site) {
         if (showdown !== undefined) {
           var s = new showdown.Converter();
           if (s !== undefined) {
-            var html = showdown.makeHtml(json.description);
+            var html = s.makeHtml(json.description);
             var el = document.getElementById("fullDesc");
             el.innerHTML = html;
           }
